@@ -13,121 +13,281 @@
             --white: #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        /* --- RESET Y BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--cream);
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.8;
+            overflow-x: hidden; /* Evita desplazamientos laterales */
         }
 
         /* --- NAVEGACIÓN --- */
         nav {
             padding: 15px 8%;
             display: flex;
-            justify-content: flex-start; /* Logo a la izquierda */
-            background: rgba(255, 255, 255, 0.9);
+            justify-content: flex-start;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(177, 147, 97, 0.1);
+            height: 80px; /* Altura fija para control */
+            align-items: center;
         }
 
-        .nav-logo { width: 90px; }
+        .nav-logo {
+            width: 80px;
+        }
 
-        /* --- SECCIÓN 1: HERO (BOTELHA A LA DERECHA) --- */
+        /* --- SECCIONES GENERALES --- */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+            .section-title h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: 2.8rem;
+                margin-bottom: 15px;
+            }
+
+        .divider {
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0 auto 20px;
+        }
+
+        /* --- HERO (CORREGIDO) --- */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 60px 8%;
-            min-height: 90vh;
+            min-height: calc(100vh - 80px); /* Ajuste exacto restando el menú */
+            padding: 40px 8%;
             gap: 40px;
+            overflow: visible;
         }
 
         .hero-text {
-            flex: 1;
-            text-align: left; /* Alineado a la izquierda */
-            animation: fadeIn 1.2s ease-out;
+            flex: 1.2;
+            padding-right: 20px;
         }
 
         .hero-image {
-            flex: 1;
+            flex: 0.8;
             display: flex;
             justify-content: flex-end;
-            animation: fadeInRight 1.5s ease-out;
+            align-items: center;
         }
 
-        .tagline { color: var(--gold); letter-spacing: 5px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 15px; }
-        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 25px; line-height: 1.1; }
-        h1 span { color: var(--gold); font-style: italic; }
-        .hero-text p { max-width: 500px; margin-bottom: 40px; font-size: 1.1rem; color: #555; }
+        .tagline {
+            color: var(--gold);
+            letter-spacing: 5px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+            h1 span {
+                color: var(--gold);
+                font-style: italic;
+            }
 
         .main-bottle {
             width: 100%;
-            max-width: 450px;
+            max-width: 400px; /* Un poco más pequeña para evitar cortes */
             height: auto;
-            border-radius: 20px;
             animation: float 6s ease-in-out infinite;
+            border-radius: 20px;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
 
-        /* --- SECCIÓN 2: BENEFICIOS (Centrados) --- */
-        .benefits { padding: 100px 8%; background: var(--white); }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 15px; }
-        .section-title .divider { width: 50px; height: 3px; background: var(--gold); margin: 0 auto 20px; }
+        /* --- NUESTRA HISTORIA --- */
+        .history {
+            background-color: var(--white);
+        }
 
+        .history-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+            .history-content p {
+                margin-bottom: 20px;
+                font-size: 1.1rem;
+                color: #555;
+            }
+
+        /* --- BENEFICIOS --- */
         .benefits-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Centra el 4to bloque */
+            justify-content: center;
             gap: 30px;
-            max-width: 1100px;
-            margin: 0 auto;
         }
 
         .benefit-card {
             flex: 1 1 250px;
             max-width: 280px;
             padding: 40px 30px;
-            background: var(--cream);
+            background: var(--white);
             border-radius: 25px;
             text-align: center;
             transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
 
-        .benefit-card:hover { transform: translateY(-10px); background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .benefit-card h3 { margin-bottom: 15px; font-size: 1.3rem; font-family: 'Playfair Display', serif; }
+            .benefit-card h3 {
+                margin-bottom: 15px;
+                font-family: 'Playfair Display', serif;
+            }
 
-        /* --- SECCIÓN 3: NUTRIMENTAL INTEGRADA --- */
-        .nutrition { padding: 100px 8%; background: var(--cream); }
+        /* --- FAQ (ACORDEÓN) --- */
+        .faq {
+            background: var(--white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            background: var(--cream);
+            margin-bottom: 12px;
+            border-radius: 12px;
+            padding: 5px 20px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+            details:hover {
+                border: 1px solid var(--gold);
+            }
+
+        summary {
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            padding: 15px 0;
+            color: var(--dark);
+            position: relative;
+        }
+
+            summary::after {
+                content: '+';
+                position: absolute;
+                right: 0;
+                color: var(--gold);
+                font-size: 1.2rem;
+            }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details p {
+            padding: 0 0 20px;
+            font-size: 0.95rem;
+            color: #555;
+            border-top: 1px solid rgba(177, 147, 97, 0.1);
+            padding-top: 15px;
+        }
+
+        /* --- NUTRIMENTAL --- */
         .nutrition-wrapper {
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
             border-top: 2px solid var(--gold);
             border-bottom: 2px solid var(--gold);
             padding: 40px 0;
         }
 
-        .nutrition-table { width: 100%; border-collapse: collapse; }
-        .nutrition-table tr { border-bottom: 1px solid rgba(177, 147, 97, 0.1); }
-        .nutrition-table td { padding: 18px 10px; }
-        .label { font-weight: 600; text-transform: uppercase; font-size: 0.75rem; color: #888; }
-        .value { text-align: right; color: var(--dark); font-weight: 600; font-size: 1.1rem; }
+        .nutrition-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .nutrition-table td {
+                padding: 12px 10px;
+                border-bottom: 1px solid rgba(177, 147, 97, 0.1);
+            }
+
+        .label {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            color: #888;
+        }
+
+        .value {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        /* --- CÓMO DISFRUTAR --- */
+        .enjoy {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+        }
+
+            .enjoy h2 {
+                color: var(--gold);
+                font-family: 'Playfair Display', serif;
+                font-size: 2.5rem;
+            }
+
+            .enjoy p {
+                max-width: 700px;
+                margin: 0 auto 30px;
+                opacity: 0.9;
+            }
 
         /* --- BOTONES --- */
-        .cta-group { display: flex; gap: 15px; flex-wrap: wrap; }
-        .cta-center { justify-content: center; margin-top: 40px; } /* Para el bloque de beneficios */
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
 
         .btn {
-            padding: 18px 35px;
+            padding: 18px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -138,25 +298,65 @@
             display: inline-block;
         }
 
-        .btn-wa { background: var(--dark); color: white; }
-        .btn-ig { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .btn-wa {
+            background: var(--gold);
+            color: white;
+        }
 
-        /* --- FOOTER --- */
-        footer { padding: 60px 8%; background: #f2f2f2; text-align: center; }
+        .btn-ig {
+            border: 2px solid var(--gold);
+            color: var(--gold);
+        }
 
-        /* --- ANIMACIONES --- */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            padding: 60px 8%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #999;
+            border-top: 1px solid #eee;
+            background: #fff;
+        }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 40px; }
-            .hero-text { text-align: center; order: 2; }
-            .hero-image { order: 1; justify-content: center; }
-            .hero-text p { margin: 0 auto 30px; }
-            .cta-group { justify-content: center; }
-            nav { justify-content: center; }
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 60px;
+                padding-bottom: 60px;
+            }
+
+            .hero-image {
+                order: 1;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .hero-text {
+                order: 2;
+                padding-right: 0;
+            }
+
+                .hero-text p {
+                    margin: 0 auto;
+                }
+
+            .cta-group {
+                justify-content: center;
+            }
+
+            .nav-logo {
+                margin: 0 auto;
+            }
+
+            nav {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -166,83 +366,118 @@
         <img src="logo.png" alt="Santi Logo" class="nav-logo">
     </nav>
 
-    <!-- SECCIÓN 1: HERO (BOTELHA A LA DERECHA) -->
+    <!-- HERO -->
     <header class="hero">
         <div class="hero-text">
             <span class="tagline">Tradición que sana</span>
-            <h1>El bienestar comienza <span>por dentro</span></h1>
-            <p>Restaurar tu microbiota es el paso más importante hacia una vida con energía. Nuestro kéfir es 100% artesanal, vivo y sin químicos.</p>
-            
+            <h1>El bienestar comienza <br><span>por dentro</span></h1>
+            <p>Descubre el kéfir artesanal, elaborado con paciencia y cultivos vivos para restaurar tu equilibrio natural.</p>
             <div class="cta-group">
                 <a href="https://wa.me/528712668242" target="_blank" class="btn btn-wa">WhatsApp Pedidos</a>
                 <a href="https://www.instagram.com/santikefir" target="_blank" class="btn btn-ig">Instagram</a>
             </div>
         </div>
-
         <div class="hero-image">
-            <img src="botella.jpg" alt="Botella Santi Kéfir" class="main-bottle">
+            <img src="botella.jpg" alt="Santi Kéfir" class="main-bottle">
         </div>
     </header>
 
-    <!-- SECCIÓN 2: BENEFICIOS (4 Bloques, último centrado) -->
+    <!-- NUESTRA HISTORIA -->
+    <section class="history" id="historia">
+        <div class="section-title">
+            <div class="divider"></div>
+            <h2>Nuestra Historia</h2>
+        </div>
+        <div class="history-content">
+            <p>Santí nació de una búsqueda muy personal. Durante mucho tiempo viví con agruras y una digestión que no me hacía sentir bien.</p>
+            <p>Un día, mi hija me recomendó tomar kéfir. Ese pequeño consejo cambió mi vida. Comencé a prepararlo en casa, aprendí a respetar el tiempo de la fermentación y descubrí el valor de hacer las cosas con cuidado.</p>
+            <p><strong>Hoy seguimos elaborando nuestro kéfir de forma artesanal, con la misma dedicación con la que comenzó esta historia.</strong></p>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
     <section class="benefits">
         <div class="section-title">
             <div class="divider"></div>
             <h2>Poder Probiótico</h2>
-            <p>Lo que un kéfir real hace por ti cada día</p>
         </div>
-
         <div class="benefits-container">
-            <div class="benefit-card">
-                <h3>🌿 Digestión</h3>
-                <p>Elimina la pesadez y la inflamación de forma natural.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>🛡️ Inmunidad</h3>
-                <p>Fortalece tus defensas desde el intestino.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>🧠 Claridad</h3>
-                <p>Mejora tu enfoque gracias al eje intestino-cerebro.</p>
-            </div>
-            <div class="benefit-card">
-                <h3>✨ Vitalidad</h3>
-                <p>Limpia tu piel y aumenta tu energía diaria.</p>
-            </div>
-        </div>
-
-        <!-- Segundo Grupo de Botones -->
-        <div class="cta-group cta-center">
-            <a href="https://wa.me/528712668242" target="_blank" class="btn btn-wa">Hacer pedido</a>
-            <a href="https://www.instagram.com/santikefir" target="_blank" class="btn btn-ig">Instagram</a>
+            <div class="benefit-card"><h3>🌿 Digestión</h3><p>Elimina pesadez e inflamación.</p></div>
+            <div class="benefit-card"><h3>🛡️ Inmunidad</h3><p>Fortalece defensas desde el intestino.</p></div>
+            <div class="benefit-card"><h3>🧠 Claridad</h3><p>Eje intestino-cerebro en equilibrio.</p></div>
+            <div class="benefit-card"><h3>✨ Vitalidad</h3><p>Piel radiante y más energía.</p></div>
         </div>
     </section>
 
-    <!-- SECCIÓN 3: NUTRIMENTAL INTEGRADA -->
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="faq">
+        <div class="section-title">
+            <div class="divider"></div>
+            <h2>Preguntas Frecuentes</h2>
+        </div>
+        <div class="faq-container">
+            <details>
+                <summary>¿Qué es el kéfir?</summary>
+                <p>Es un alimento fermentado con leche y cultivos vivos. Su proceso le da un sabor único y una composición superior a la leche común.</p>
+            </details>
+            <details>
+                <summary>¿Cómo debo conservar Santí?</summary>
+                <p>Siempre refrigerado entre 2 °C y 6 °C. No lo dejes fuera por periodos prolongados.</p>
+            </details>
+            <details>
+                <summary>¿Cuánto debo tomar al día?</summary>
+                <p>Si es tu primera vez, comienza con una porción pequeña e incrementa según tu tolerancia.</p>
+            </details>
+            <details>
+                <summary>¿Tiene lactosa?</summary>
+                <p>Sí, pero se reduce naturalmente durante la fermentación. No es un producto libre de lactosa.</p>
+            </details>
+            <details>
+                <summary>¿Cuánto dura?</summary>
+                <p>Tiene una vida de anaquel de 21 días conservado en refrigeración.</p>
+            </details>
+            <details>
+                <summary>¿Cómo sé que Santí es seguro?</summary>
+                <p>Ha sido evaluado por un laboratorio independiente mediante estudios microbiológicos y de vida de anaquel, garantizando calidad y transparencia.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- NUTRIMENTAL -->
     <section class="nutrition">
         <div class="section-title">
             <div class="divider"></div>
-            <h2>Información Nutrimental</h2>
-            <p>Análisis artesanal por cada 100ml</p>
+            <h2>Análisis Nutrimental</h2>
+            <p>Por cada 100ml de Santí</p>
         </div>
-
         <div class="nutrition-wrapper">
             <table class="nutrition-table">
-                <tr><td class="label">Energía</td><td class="value">40 kcal</td></tr>
-                <tr><td class="label">Proteína Bio-disponible</td><td class="value">3.4 g</td></tr>
-                <tr><td class="label">Grasas Totales</td><td class="value">1.5 g</td></tr>
-                <tr><td class="label">Carbohidratos</td><td class="value">3.8 g</td></tr>
-                <tr><td class="label">Lactosa Residual</td><td class="value">2.1 g</td></tr>
-                <tr><td class="label">Microorganismos</td><td class="value">Vivos y Activos</td></tr>
-                <tr><td class="label">Ingredientes</td><td class="value">Leche entera y nódulos</td></tr>
+                <tr><td class="label">Energía</td><td class="value">45 kcal</td></tr>
+                <tr><td class="label">Proteína</td><td class="value">3.4 g</td></tr>
+                <tr><td class="label">Grasa Total</td><td class="value">1.3 g</td></tr>
+                <tr><td class="label">Carbohidratos</td><td class="value">5.1 g</td></tr>
+                <tr><td class="label">Azúcares Naturales</td><td class="value">3.6 g</td></tr>
+                <tr><td class="label">Sodio</td><td class="value">51 mg</td></tr>
+                <tr><td class="label">Ingredientes</td><td class="value">Leche y Cultivos Vivos</td></tr>
             </table>
+            <p style="text-align: center; font-size: 0.7rem; color: #999; margin-top: 20px; line-height: 1.2;">* SIN AZÚCARES AÑADIDOS. PRODUCTO EVALUADO POR LABORATORIO INDEPENDIENTE Y ESPECIALIZADO.</p>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- DISFRUTAR -->
+    <section class="enjoy">
+        <h2>Cómo disfrutar Santí</h2>
+        <div class="divider" style="background: white;"></div>
+        <p>La mejor manera es natural: bien frío y como parte de tu rutina diaria. Cada botella es el reflejo de un proceso que honra la sencillez de los buenos ingredientes.</p>
+        <div class="cta-group" style="justify-content: center;">
+            <a href="https://wa.me/528712668242" class="btn btn-wa" style="background: white; color: var(--dark);">Pedir mi Santí</a>
+        </div>
+    </section>
+
     <footer>
-        <img src="logo.png" alt="Santi Logo" class="footer-logo" style="width: 70px; opacity: 0.5; margin-bottom: 20px;">
-        <p style="font-size: 0.75rem; letter-spacing: 2px; color: #888;">MANTENER REFRIGERADO • TORREÓN</p>
+        <img src="logo.png" alt="Santi" style="width: 60px; opacity: 0.4; margin-bottom: 20px;">
+        <p>Gracias por permitirnos compartir un pedacito de nuestra historia contigo.</p>
+        <p style="margin-top: 15px; letter-spacing: 2px; font-weight: 600; color: var(--gold);">SANTI KÉFIR • TORREÓN</p>
     </footer>
 
 </body>
