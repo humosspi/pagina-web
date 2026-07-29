@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santi Kéfir | El arte de sanar desde adentro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #b19361;
+            --dark: #2d4a22;
+            --cream: #fdfaf5;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            padding: 15px 8%;
+            display: flex;
+            justify-content: flex-start; /* Logo a la izquierda */
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(177, 147, 97, 0.1);
+        }
+
+        .nav-logo { width: 90px; }
+
+        /* --- SECCIÓN 1: HERO (BOTELHA A LA DERECHA) --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 8%;
+            min-height: 90vh;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left; /* Alineado a la izquierda */
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            animation: fadeInRight 1.5s ease-out;
+        }
+
+        .tagline { color: var(--gold); letter-spacing: 5px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; display: block; margin-bottom: 15px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 25px; line-height: 1.1; }
+        h1 span { color: var(--gold); font-style: italic; }
+        .hero-text p { max-width: 500px; margin-bottom: 40px; font-size: 1.1rem; color: #555; }
+
+        .main-bottle {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* --- SECCIÓN 2: BENEFICIOS (Centrados) --- */
+        .benefits { padding: 100px 8%; background: var(--white); }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 15px; }
+        .section-title .divider { width: 50px; height: 3px; background: var(--gold); margin: 0 auto 20px; }
+
+        .benefits-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centra el 4to bloque */
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            flex: 1 1 250px;
+            max-width: 280px;
+            padding: 40px 30px;
+            background: var(--cream);
+            border-radius: 25px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .benefit-card:hover { transform: translateY(-10px); background: var(--white); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .benefit-card h3 { margin-bottom: 15px; font-size: 1.3rem; font-family: 'Playfair Display', serif; }
+
+        /* --- SECCIÓN 3: NUTRIMENTAL INTEGRADA --- */
+        .nutrition { padding: 100px 8%; background: var(--cream); }
+        .nutrition-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            padding: 40px 0;
+        }
+
+        .nutrition-table { width: 100%; border-collapse: collapse; }
+        .nutrition-table tr { border-bottom: 1px solid rgba(177, 147, 97, 0.1); }
+        .nutrition-table td { padding: 18px 10px; }
+        .label { font-weight: 600; text-transform: uppercase; font-size: 0.75rem; color: #888; }
+        .value { text-align: right; color: var(--dark); font-weight: 600; font-size: 1.1rem; }
+
+        /* --- BOTONES --- */
+        .cta-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .cta-center { justify-content: center; margin-top: 40px; } /* Para el bloque de beneficios */
+
+        .btn {
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-wa { background: var(--dark); color: white; }
+        .btn-ig { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* --- FOOTER --- */
+        footer { padding: 60px 8%; background: #f2f2f2; text-align: center; }
+
+        /* --- ANIMACIONES --- */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 40px; }
+            .hero-text { text-align: center; order: 2; }
+            .hero-image { order: 1; justify-content: center; }
+            .hero-text p { margin: 0 auto 30px; }
+            .cta-group { justify-content: center; }
+            nav { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="logo.png" alt="Santi Logo" class="nav-logo">
+    </nav>
+
+    <!-- SECCIÓN 1: HERO (BOTELHA A LA DERECHA) -->
+    <header class="hero">
+        <div class="hero-text">
+            <span class="tagline">Tradición que sana</span>
+            <h1>El bienestar comienza <span>por dentro</span></h1>
+            <p>Restaurar tu microbiota es el paso más importante hacia una vida con energía. Nuestro kéfir es 100% artesanal, vivo y sin químicos.</p>
+            
+            <div class="cta-group">
+                <a href="https://wa.me/528712668242" target="_blank" class="btn btn-wa">WhatsApp Pedidos</a>
+                <a href="https://www.instagram.com/santikefir" target="_blank" class="btn btn-ig">Instagram</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="botella.jpg" alt="Botella Santi Kéfir" class="main-bottle">
+        </div>
+    </header>
+
+    <!-- SECCIÓN 2: BENEFICIOS (4 Bloques, último centrado) -->
+    <section class="benefits">
+        <div class="section-title">
+            <div class="divider"></div>
+            <h2>Poder Probiótico</h2>
+            <p>Lo que un kéfir real hace por ti cada día</p>
+        </div>
+
+        <div class="benefits-container">
+            <div class="benefit-card">
+                <h3>🌿 Digestión</h3>
+                <p>Elimina la pesadez y la inflamación de forma natural.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>🛡️ Inmunidad</h3>
+                <p>Fortalece tus defensas desde el intestino.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>🧠 Claridad</h3>
+                <p>Mejora tu enfoque gracias al eje intestino-cerebro.</p>
+            </div>
+            <div class="benefit-card">
+                <h3>✨ Vitalidad</h3>
+                <p>Limpia tu piel y aumenta tu energía diaria.</p>
+            </div>
+        </div>
+
+        <!-- Segundo Grupo de Botones -->
+        <div class="cta-group cta-center">
+            <a href="https://wa.me/528712668242" target="_blank" class="btn btn-wa">Hacer pedido</a>
+            <a href="https://www.instagram.com/santikefir" target="_blank" class="btn btn-ig">Instagram</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: NUTRIMENTAL INTEGRADA -->
+    <section class="nutrition">
+        <div class="section-title">
+            <div class="divider"></div>
+            <h2>Información Nutrimental</h2>
+            <p>Análisis artesanal por cada 100ml</p>
+        </div>
+
+        <div class="nutrition-wrapper">
+            <table class="nutrition-table">
+                <tr><td class="label">Energía</td><td class="value">40 kcal</td></tr>
+                <tr><td class="label">Proteína Bio-disponible</td><td class="value">3.4 g</td></tr>
+                <tr><td class="label">Grasas Totales</td><td class="value">1.5 g</td></tr>
+                <tr><td class="label">Carbohidratos</td><td class="value">3.8 g</td></tr>
+                <tr><td class="label">Lactosa Residual</td><td class="value">2.1 g</td></tr>
+                <tr><td class="label">Microorganismos</td><td class="value">Vivos y Activos</td></tr>
+                <tr><td class="label">Ingredientes</td><td class="value">Leche entera y nódulos</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <img src="logo.png" alt="Santi Logo" class="footer-logo" style="width: 70px; opacity: 0.5; margin-bottom: 20px;">
+        <p style="font-size: 0.75rem; letter-spacing: 2px; color: #888;">MANTENER REFRIGERADO • TORREÓN</p>
+    </footer>
+
+</body>
+</html>
